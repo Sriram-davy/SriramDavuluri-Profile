@@ -8,7 +8,6 @@ Welcome to my GitHub profile! I'm an IT professional with **7+ years of experien
 
 **Current Role:** Senior Java Developer  
 **Company:** Deloitte USI  
-**Location:** Slough, England, GB
 
 I bring extensive experience in designing and implementing robust backend systems, cloud architecture, and enterprise-level solutions. My career has been defined by a commitment to technical excellence and delivering high-impact projects.
 
@@ -18,6 +17,8 @@ I bring extensive experience in designing and implementing robust backend system
 
 ### Programming Languages
 - **Java** (Primary expertise)
+- Angular
+- MongoDB
 - SQL
 - JavaScript (Basic)
 
@@ -37,7 +38,7 @@ I bring extensive experience in designing and implementing robust backend system
 - **Spring Boot** / Spring Framework
 - RESTful API development
 - Microservices architecture
-- DevOps practices
+- APIGEE API Management
 
 ### Specialized Skills
 - Story point estimation & agile methodology
@@ -49,9 +50,7 @@ I bring extensive experience in designing and implementing robust backend system
 ---
 
 ## 🎓 Education & Continuous Learning
-
-- **Executive MBA** (Currently Pursuing)
-- Bachelor's degree in [Your Field]
+- Bachelor's degree in Computer Sciences 
 - Certifications in Azure cloud services
 
 I'm committed to staying current with industry trends and expanding my expertise through continuous learning and professional development.
@@ -108,9 +107,8 @@ I'm always interested in:
 - Exploring new technologies and frameworks
 
 **Connect with me on:**
-- 💼 [LinkedIn](https://www.linkedin.com/in/yourprofile)
-- 📧 Email: [your.email@example.com]
-- 🐦 Twitter: [@yourhandle]
+- 💼 [LinkedIn](https://www.linkedin.com/in/sriram-davuluri-25764b125/)
+- 📧 Email: [sriram.davy@gmail.com]
 
 ---
 
