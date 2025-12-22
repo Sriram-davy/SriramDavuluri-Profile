@@ -5,17 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sriram Davuluri - Full Stack Developer</title>
+    <link rel="icon" href="favicon.ico">
     <style>
         :root {
             --color-primary: #32b8c6;
             --color-primary-dark: #1d7480;
             --color-bg: #0f1419;
+            --color-bg-light: #f4f4f4;
             --color-surface: #1a1f27;
+            --color-surface-light: #ffffff;
             --color-text: #e0e0e0;
+            --color-text-light: #333333;
             --color-text-secondary: #a0a0a0;
             --color-accent: #ff6b6b;
-            --color-success: #51cf66;
-            --color-warning: #ffa94d;
             --transition: 0.3s ease;
         }
 
@@ -30,6 +32,17 @@
             background-color: var(--color-bg);
             color: var(--color-text);
             line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.light-mode {
+            background-color: var(--color-bg-light);
+            color: var(--color-text-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
         }
 
         .container {
@@ -38,7 +51,6 @@
             padding: 0 20px;
         }
 
-        /* Header / Hero */
         header {
             background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
             padding: 60px 20px;
@@ -47,6 +59,11 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: background 0.3s;
+        }
+
+        body.light-mode header {
+            background: linear-gradient(135deg, #f4f4f4 0%, #d9d9d9 100%);
         }
 
         .header-content {
@@ -65,24 +82,31 @@
         .profile-intro h1 {
             font-size: 2.5rem;
             margin-bottom: 10px;
-            color: #fff;
             font-weight: 700;
+        }
+
+        body:not(.light-mode) .profile-intro h1 {
+            color: #fff;
         }
 
         .profile-intro .title {
             font-size: 1.3rem;
-            color: var(--color-primary);
             margin-bottom: 15px;
             font-weight: 500;
+            color: var(--color-primary);
+        }
+
+        body.light-mode .profile-intro .title {
+            color: var(--color-primary-dark);
         }
 
         .profile-intro .location {
-            color: var(--color-text-secondary);
             font-size: 0.95rem;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 8px;
+            color: var(--color-text-secondary);
         }
 
         .cta-buttons {
@@ -99,7 +123,6 @@
             cursor: pointer;
             font-weight: 600;
             transition: all var(--transition);
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -141,7 +164,6 @@
             box-shadow: 0 10px 30px rgba(50, 184, 198, 0.3);
         }
 
-        /* Navigation */
         nav {
             background-color: var(--color-surface);
             padding: 15px 0;
@@ -149,6 +171,11 @@
             top: 0;
             z-index: 99;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s;
+        }
+
+        body.light-mode nav {
+            background-color: var(--color-surface-light);
         }
 
         .nav-content {
@@ -159,20 +186,20 @@
         }
 
         .nav-link {
-            color: var(--color-text-secondary);
-            text-decoration: none;
             font-weight: 500;
             cursor: pointer;
-            transition: color var(--transition);
             padding: 5px 10px;
+            transition: color var(--transition);
         }
 
-        .nav-link:hover,
         .nav-link.active {
             color: var(--color-primary);
         }
 
-        /* Main Content */
+        body.light-mode .nav-link.active {
+            color: var(--color-primary-dark);
+        }
+
         main {
             padding: 60px 20px;
         }
@@ -200,13 +227,36 @@
         .section-title {
             font-size: 2rem;
             margin-bottom: 40px;
-            color: #fff;
             padding-bottom: 15px;
-            border-bottom: 3px solid var(--color-primary);
             display: inline-block;
+            border-bottom: 3px solid var(--color-primary);
         }
 
-        /* Experience & Education Cards */
+        body.light-mode .section-title {
+            border-bottom-color: var(--color-primary-dark);
+        }
+
+        .skill-bar {
+            background-color: #1a1f27;
+            border-radius: 25px;
+            margin: 8px 0;
+            height: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            width: 0;
+            border-radius: 25px;
+            color: white;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: width 1.5s ease-in-out;
+        }
+
         .card {
             background-color: var(--color-surface);
             padding: 25px;
@@ -217,9 +267,10 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
-        .card:hover {
-            transform: translateX(10px);
-            box-shadow: 0 8px 25px rgba(50, 184, 198, 0.2);
+        body.light-mode .card {
+            background-color: var(--color-surface-light);
+            border-left-color: var(--color-primary-dark);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .card-title {
@@ -229,17 +280,20 @@
             font-weight: 600;
         }
 
+        body.light-mode .card-title {
+            color: var(--color-primary-dark);
+        }
+
         .card-subtitle {
             font-size: 1rem;
-            color: var(--color-text);
-            margin-bottom: 5px;
             font-weight: 500;
+            margin-bottom: 5px;
         }
 
         .card-meta {
-            color: var(--color-text-secondary);
             font-size: 0.9rem;
             margin-bottom: 15px;
+            color: var(--color-text-secondary);
         }
 
         .card-description {
@@ -247,36 +301,126 @@
             line-height: 1.7;
         }
 
+        body.light-mode .card-description {
+            color: #555;
+        }
+
         /* Skills */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
 
         .skill-category {
-            background-color: var(--color-surface);
-            padding: 25px;
+            padding: 20px;
             border-radius: 10px;
-            border-top: 3px solid var(--color-primary);
+            background-color: var(--color-surface);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-top: 3px solid var(--color-primary);
+        }
+
+        body.light-mode .skill-category {
+            background-color: var(--color-surface-light);
+            border-top-color: var(--color-primary-dark);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         .skill-category h3 {
-            color: var(--color-primary);
             margin-bottom: 15px;
             font-size: 1.1rem;
+            color: var(--color-primary);
         }
 
-        .skill-tag {
-            display: inline-block;
+        body.light-mode .skill-category h3 {
+            color: var(--color-primary-dark);
+        }
+
+        .skill-bar {
             background-color: rgba(50, 184, 198, 0.15);
-            color: var(--color-primary);
-            padding: 8px 14px;
-            margin: 5px 5px 5px 0;
             border-radius: 20px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            height: 20px;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            width: 0%;
+            background-color: var(--color-primary);
+            border-radius: 20px;
+            text-align: right;
+            padding-right: 10px;
+            line-height: 20px;
+            color: white;
             font-size: 0.85rem;
-            border: 1px solid var(--color-primary);
+            font-weight: 500;
+            transition: width 1.5s ease;
+        }
+
+        body.light-mode .skill-bar-fill {
+            background-color: var(--color-primary-dark);
+            color: white;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            background-color: var(--color-surface);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        body.light-mode .project-card {
+            background-color: var(--color-surface-light);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            background: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .project-content {
+            padding: 15px;
+        }
+
+        .project-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .project-tags {
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .project-link {
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        body.light-mode .project-link {
+            color: var(--color-primary-dark);
         }
 
         /* Footer */
@@ -285,7 +429,11 @@
             padding: 40px 20px;
             text-align: center;
             border-top: 1px solid rgba(50, 184, 198, 0.2);
-            margin-top: 60px;
+        }
+
+        body.light-mode footer {
+            background-color: var(--color-surface-light);
+            border-color: rgba(0, 0, 0, 0.1);
         }
 
         .social-links {
@@ -304,48 +452,50 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none;
-            transition: all var(--transition);
             font-weight: bold;
+            transition: all 0.3s;
         }
 
         .social-link:hover {
-            background-color: var(--color-primary-dark);
             transform: translateY(-5px);
+            background-color: var(--color-primary-dark);
         }
 
-        .footer-text {
-            color: var(--color-text-secondary);
-            font-size: 0.9rem;
+        /* Animated counters */
+        .counter {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-primary);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content {
-                justify-content: center;
-                text-align: center;
-            }
+        body.light-mode .counter {
+            color: var(--color-primary-dark);
+        }
 
-            .profile-intro h1 {
-                font-size: 2rem;
-            }
+        /* Dark Mode Toggle Button */
+        #darkModeToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            z-index: 1000;
+        }
 
-            .profile-intro .title {
-                font-size: 1.1rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-buttons {
-                justify-content: center;
-            }
+        #darkModeToggle:hover {
+            background-color: var(--color-primary-dark);
         }
     </style>
 </head>
 
 <body>
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle">🌙</button>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -356,8 +506,9 @@
                     <div class="location">📍 Bangalore, India</div>
                     <div class="cta-buttons">
                         <a href="https://www.linkedin.com/in/sriram-davuluri-25764b125/" class="btn btn-primary"
-                            target="_blank">LinkedIn Profile</a>
-                        <button class="btn btn-secondary" onclick="scrollToSection('contact')">Get in Touch</button>
+                            target="_blank">LinkedIn</a>
+                        <a href="#" class="btn btn-primary" target="_blank">GitHub</a>
+                        <button class="btn btn-secondary" onclick="scrollToSection('contact')">Contact Me</button>
                     </div>
                 </div>
                 <div class="avatar">SD</div>
@@ -369,181 +520,179 @@
     <nav>
         <div class="container">
             <div class="nav-content">
-                <a class="nav-link active" onclick="showSection('about')">About</a>
-                <a class="nav-link" onclick="showSection('experience')">Experience</a>
-                <a class="nav-link" onclick="showSection('education')">Education</a>
-                <a class="nav-link" onclick="showSection('skills')">Skills</a>
-                <a class="nav-link" onclick="showSection('contact')">Contact</a>
+                <a class="nav-link active" onclick="showSection('about', event)">About</a>
+                <a class="nav-link" onclick="showSection('experience', event)">Experience</a>
+                <a class="nav-link" onclick="showSection('education', event)">Education</a>
+                <a class="nav-link" onclick="showSection('skills', event)">Skills</a>
+                <a class="nav-link" onclick="showSection('projects', event)">Projects</a>
+                <a class="nav-link" onclick="showSection('contact', event)">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main>
-        <div class="container">
+    <main class="container">
+        <!-- About -->
+        <section id="about" class="active">
+            <h2 class="section-title">About Me</h2>
+            <div class="card">
+                <p>I'm a passionate Full Stack Developer with 8+ years of IT experience, specializing in designing and
+                    building scalable, cloud-native enterprise applications. I currently work at Deloitte USI, where I
+                    contribute to the development of high-impact systems by applying strong engineering fundamentals,
+                    clean architecture, and modern development practices.</p>
+                <br />
+                <p>My core expertise lies in backend development using Java and Spring Boot, where I design robust
+                    microservices and RESTful APIs that are secure, maintainable, and performance-oriented. I have
+                    hands-on experience integrating API management solutions such as Apigee to expose, secure, and
+                    monitor APIs at scale.</p>
+                <br />
+                <p>I place a strong emphasis on code quality and reliability, with extensive experience writing unit and
+                    integration tests using JUnit. I actively participate in code reviews, performance tuning, and
+                    refactoring efforts to ensure long-term maintainability and scalability of systems.</p>
+                <br />
+                <p>I am well-versed in Agile methodologies and regularly contribute to sprint planning, estimation, and
+                    technical decision-making.</p>
+                <p>Passionate about clean architecture, DevOps practices, automated testing, and mentoring junior
+                    developers. Currently exploring Agentic AI solutions.</p>
+                <br />
+                <p class="counter" data-target="8">0</p> Years Experience
+            </div>
+        </section>
 
-            <!-- About Section -->
-            <section id="about" class="active">
-                <h2 class="section-title">About Me</h2>
-                <div class="card">
-                    <p style="font-size: 1.05rem; line-height: 1.8;">
-                        I'm a passionate Full Stack Developer with 8+ years of IT experience,
-                        specializing in designing and building scalable, cloud-native enterprise applications.
-                        I currently work at Deloitte USI, where I contribute to the development of
-                        high-impact systems by applying strong engineering fundamentals, clean architecture,
-                        and modern development practices.
-                    </p>
-
-                    <br />
-
-                    <p style="font-size: 1.05rem; line-height: 1.8;">
-                        My core expertise lies in backend development using Java and Spring Boot,
-                        where I design robust microservices and RESTful APIs that are secure,
-                        maintainable, and performance-oriented. I have hands-on experience
-                        integrating API management solutions such as Apigee to expose, secure,
-                        and monitor APIs at scale.
-                    </p>
-
-                    <br />
-
-                    <p style="font-size: 1.05rem; line-height: 1.8;">
-                        On the frontend, I work with Angular to build responsive and intuitive
-                        user interfaces, enabling seamless interaction between users and backend services.
-                        I am comfortable working across the full stack and collaborating closely
-                        with UI/UX, QA, DevOps, and product teams.
-                    </p>
-
-                    <br />
-
-                    <p style="font-size: 1.05rem; line-height: 1.8;">
-                        I place a strong emphasis on code quality and reliability, with extensive
-                        experience writing unit and integration tests using JUnit. I actively
-                        participate in code reviews, performance tuning, and refactoring efforts
-                        to ensure long-term maintainability and scalability of systems.
-                    </p>
-
-                    <br />
-
-                    <p style="font-size: 1.05rem; line-height: 1.8;">
-                        I also have practical exposure to containerization and orchestration technologies
-                        such as Docker and Kubernetes, enabling efficient deployment and management
-                        of microservices in cloud environments. I am well-versed in Agile methodologies
-                        and regularly contribute to sprint planning, estimation, and technical decision-making.
-                    </p>
-
-                    <br />
-
-                    <p style="font-size: 1.05rem; line-height: 1.8; color: var(--color-text-secondary);">
-                        Beyond coding, I am committed to continuous learning, fitness, and content creation.
-                        I actively explore emerging technologies and am currently focusing on building
-                        Agentic AI solutions, aiming to combine intelligent automation with robust
-                        enterprise systems.
-                    </p>
+        <!-- Experience -->
+        <section id="experience">
+            <h2 class="section-title">Experience</h2>
+            <div class="card">
+                <div class="card-title">Full Stack Developer</div>
+                <div class="card-subtitle">Deloitte USI | Current Role</div>
+                <div class="card-meta">8+ Years IT Experience</div>
+                <div class="card-description">
+                    • Developed enterprise-level microservices using Java & Spring Boot<br />
+                    • Built Angular frontend applications<br />
+                    • API Management (Apigee), JWT, OAuth<br />
+                    • Azure AD B2C custom policies, SSO integrations<br />
+                    • Agile methodology & sprint planning
                 </div>
-            </section>
+            </div>
 
+            <div class="card">
+                <div class="card-title">Key Achievements</div>
+                <div class="card-description">
+                    ✓ Architected cloud-native microservices reducing infrastructure costs by 30%<br />
+                    ✓ Resolved critical penetration testing findings, strengthening application security and
+                    compliance<br />
+                    ✓ Designed and implemented RESTful APIs consumed by multiple downstream services<br />
+                    ✓ Built and maintained 10+ Spring Boot microservices with clean layered architecture<br />
+                    ✓ Improved API performance by optimizing database queries and caching strategies<br />
+                    ✓ Implemented JWT-based authentication and role-based access control across services<br />
+                    ✓ Integrated API Gateway (Apigee) to manage routing, security, and rate limiting<br />
+                    ✓ Increased code quality and reliability by writing comprehensive JUnit test suites<br />
+                    ✓ Containerized applications using Docker and deployed services on Kubernetes clusters<br />
+                    ✓ Developed responsive Angular interfaces integrated with backend microservices<br />
+                    ✓ Led cross-functional teams in agile sprint planning and on-time delivery<br />
+                    ✓ Automated enterprise data workflows using Excel macros and backend integrations<br />
+                    ✓ Reduced production defects through proactive code reviews and refactoring<br />
+                    ✓ Mentored junior developers on Java best practices, testing, and clean code principles<br />
+                    ✓ Actively adopted new technologies and best practices to improve system design and
+                    scalability<br />
+                </div>
+            </div>
 
-            <!-- Experience Section -->
-            <section id="experience">
-                <h2 class="section-title">Professional Experience</h2>
+        </section>
 
-                <div class="card">
-                    <div class="card-title">Full Stack Developer</div>
-                    <div class="card-subtitle">Deloitte USI</div>
-                    <div class="card-meta">Current Role | 8+ Years IT Experience</div>
-                    <div class="card-description">
-                        • Develop and maintain enterprise-level Java applications using Spring Boot and microservices
-                        architecture<br />
-                        • Developed an Angular application <br />
-                        • Databases worked with (Mongo DB, MySQL, Postgres)<br />
-                        • Developed and maintained Azure custom policies (User registration, Password change, User
-                        Login)<br />
-                        • Set up SSO with third party applications using OIDC (IDP Initiated, SP Initiated)<br />
-                        • API Management using APIGEE API gateway (Oauth, Rate Limiting, HTML Injection protection
-                        etc.)<br />
-                        • Agile methodology expertise with story point estimation<br />
-                        • API integration and REST web services<br />
-                        • Performance optimization and code quality improvements<br />
+        <!-- Education -->
+        <section id="education">
+            <h2 class="section-title">Education</h2>
+            <div class="card">
+                <div class="card-title">Bachelor's Degree</div>
+                <div class="card-subtitle">IT / Computer Science</div>
+                <div class="card-description">Foundation in software development, database management, and core IT
+                    principles that laid the groundwork for 8+ years of professional experience.</div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+
+                <div class="skill-category">
+                    <h3>🔧 Programming</h3>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="90%"
+                            style="background: linear-gradient(90deg, #ff6b6b, #f94d6a);">Java</div>
                     </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-title">Key Achievements</div>
-                    <div class="card-description">
-                        ✓ Architected cloud-native microservices reducing infrastructure costs by 30%<br />
-                        ✓ Resolved critical penetration testing findings, strengthening application security and
-                        compliance<br />
-                        ✓ Designed and implemented RESTful APIs consumed by multiple downstream services<br />
-                        ✓ Built and maintained 10+ Spring Boot microservices with clean layered architecture<br />
-                        ✓ Improved API performance by optimizing database queries and caching strategies<br />
-                        ✓ Implemented JWT-based authentication and role-based access control across services<br />
-                        ✓ Integrated API Gateway (Apigee) to manage routing, security, and rate limiting<br />
-                        ✓ Increased code quality and reliability by writing comprehensive JUnit test suites<br />
-                        ✓ Containerized applications using Docker and deployed services on Kubernetes clusters<br />
-                        ✓ Developed responsive Angular interfaces integrated with backend microservices<br />
-                        ✓ Led cross-functional teams in agile sprint planning and on-time delivery<br />
-                        ✓ Automated enterprise data workflows using Excel macros and backend integrations<br />
-                        ✓ Reduced production defects through proactive code reviews and refactoring<br />
-                        ✓ Mentored junior developers on Java best practices, testing, and clean code principles<br />
-                        ✓ Actively adopted new technologies and best practices to improve system design and
-                        scalability<br />
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="85%"
+                            style="background: linear-gradient(90deg, #6bc1ff, #4da6f9);">Spring Boot</div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="80%"
+                            style="background: linear-gradient(90deg, #f5d74d, #f9a14d);">Angular</div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="75%"
+                            style="background: linear-gradient(90deg, #6bff95, #4df96a);">Python</div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="70%"
+                            style="background: linear-gradient(90deg, #ff9a6b, #f96f4d);">REST APIs</div>
                     </div>
                 </div>
-            </section>
 
-            <!-- Education Section -->
-            <section id="education">
-                <h2 class="section-title">Education</h2>
-
-                <!-- <div class="card">
-                    <div class="card-title">Executive MBA</div>
-                    <div class="card-subtitle">Currently Pursuing</div>
-                    <div class="card-meta">Business Leadership & Management</div>
-                    <div class="card-description">
-                        Focusing on strategic business management, organizational leadership, and advanced business analytics to complement technical expertise.
+                <div class="skill-category">
+                    <h3>☁️ Cloud / API</h3>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="85%"
+                            style="background: linear-gradient(90deg, #9d6bff, #6c4df9);">Apigee API Management</div>
                     </div>
-                </div> -->
-
-                <div class="card">
-                    <div class="card-title">Bachelor's Degree</div>
-                    <div class="card-subtitle">IT / Computer Science</div>
-                    <div class="card-description">
-                        Foundation in software development, database management, and core IT principles that laid the
-                        groundwork for 8+ years of professional experience.
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="80%"
+                            style="background: linear-gradient(90deg, #ff6bde, #f94df5);">Azure AD B2C</div>
                     </div>
                 </div>
-            </section>
 
-            <!-- Skills Section -->
-            <section id="skills">
-                <h2 class="section-title">Technical Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>🔧 Programming</h3>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">Angular</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Spring Boot</span>
-                        <span class="skill-tag">REST APIs</span>
+                <div class="skill-category">
+                    <h3>💾 Databases</h3>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="85%"
+                            style="background: linear-gradient(90deg, #6bffd6, #4df9b1);">Mongo DB</div>
                     </div>
-
-                    <div class="skill-category">
-                        <h3>☁️ Cloud Tools / Technologies</h3>
-                        <span class="skill-tag">Apigee API Management</span>
-                        <span class="skill-tag">Azure AD B2C (Custom policies)</span>
-                        <!-- <span class="skill-tag">App Service</span>
-                        <span class="skill-tag">Cloud Architecture</span> -->
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="80%"
+                            style="background: linear-gradient(90deg, #ffd36b, #f9b84d);">MySQL</div>
                     </div>
-
-                    <div class="skill-category">
-                        <h3>💾 Databases</h3>
-                        <span class="skill-tag">Mongo DB</span>
-                        <span class="skill-tag">My SQL</span>
-                        <span class="skill-tag">Postgres</span>
-                        <span class="skill-tag">Query Optimization</span>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="75%"
+                            style="background: linear-gradient(90deg, #6b8fff, #4d6ff9);">Postgres</div>
                     </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="70%"
+                            style="background: linear-gradient(90deg, #ff6bb3, #f94d90);">Query Optimization</div>
+                    </div>
+                </div>
 
-                    <div class="skill-category">
+                <div class="skill-category">
+                    <h3>🏗️ Software Architecture</h3>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="90%"
+                            style="background: linear-gradient(90deg, #ffb36b, #f97b4d);">Microservices</div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="85%"
+                            style="background: linear-gradient(90deg, #6bffec, #4df9d1);">System Design</div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="80%"
+                            style="background: linear-gradient(90deg, #ff6b8f, #f94d7a);">Clean Code</div>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-bar-fill" data-skill="75%"
+                            style="background: linear-gradient(90deg, #9dff6b, #6cff4d);">Design Patterns</div>
+                    </div>
+                </div>
+
+                 <div class="skill-category">
                         <h3>🏗️ Software Architecture</h3>
                         <span class="skill-tag">Microservices</span>
                         <span class="skill-tag">System Design</span>
@@ -568,95 +717,104 @@
                         <span class="skill-tag">Jenkins</span>
                         <span class="skill-tag">Confluence</span>
                     </div>
-                </div>
-            </section>
 
-            <!-- Contact Section -->
-            <section id="contact">
-                <h2 class="section-title">Get in Touch</h2>
-                <div class="card" style="text-align: center;">
-                    <p style="font-size: 1.1rem; margin-bottom: 20px;">
-                        I'm always open to discussing new opportunities, tech innovations, and career growth. Let's
-                        connect!
-                    </p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/sriram-davuluri-25764b125/" class="social-link"
-                            title="LinkedIn" target="_blank">in</a>
-                        <!-- <a href="https://instagram.com" class="social-link" title="Instagram" target="_blank">ig</a> -->
-                        <a href="mailto:sriram.davy@gmail.com" class="social-link" title="Email">✉</a>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">Project 1</div>
+                    <div class="project-content">
+                        <div class="project-title">Microservices Demo</div>
+                        <div class="project-tags">Java, Spring Boot, Docker</div>
+                        <a href="#" class="project-link">GitHub →</a>
                     </div>
-                    <p style="color: var(--color-text-secondary); margin-top: 20px; font-size: 0.95rem;">
-                        📧 Email: sriram.davy@gmail.com<br />
-                        🔗 LinkedIn: linkedin.com/in/sriram-davuluri-25764b125
-                    </p>
                 </div>
-            </section>
+                <div class="project-card">
+                    <div class="project-image">Project 2</div>
+                    <div class="project-content">
+                        <div class="project-title">Angular Frontend</div>
+                        <div class="project-tags">Angular, REST API</div>
+                        <a href="#" class="project-link">GitHub →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        </div>
+        <!-- Contact -->
+        <section id="contact">
+            <h2 class="section-title">Contact</h2>
+            <div class="card" style="text-align:center;">
+                <p>Open to discussing opportunities, collaborations, or tech innovations. Let's connect!</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/sriram-davuluri-25764b125/" class="social-link"
+                        target="_blank">in</a>
+                    <a href="mailto:sriram.davy@gmail.com" class="social-link">✉</a>
+                    <a href="#" class="social-link" target="_blank">GH</a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/sriram-davuluri-25764b125/" class="social-link" title="LinkedIn"
-                    target="_blank">in</a>
-                <!-- <a href="https://instagram.com" class="social-link" title="Instagram" target="_blank">ig</a> -->
-            </div>
-            <p class="footer-text">
-                © 2026 Sriram Davuluri. Crafted with passion for technology and excellence.
-            </p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/sriram-davuluri-25764b125/" class="social-link" target="_blank">in</a>
+            <a href="#" class="social-link" target="_blank">GH</a>
         </div>
+        <p>© 2026 Sriram Davuluri. Crafted with passion for technology.</p>
     </footer>
 
     <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+        });
 
-            // Remove active class from all nav links
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-
-            // Show selected section
-            const selectedSection = document.getElementById(sectionId);
-            if (selectedSection) {
-                selectedSection.classList.add('active');
-            }
-
-            // Add active class to clicked nav link
+        // Navigation
+        function showSection(id, event) {
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
             event.target.classList.add('active');
-
-            // Scroll to content
-            document.querySelector('main').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function scrollToSection(sectionId) {
-            const section = document.getElementById(sectionId);
-            if (section) {
-                section.classList.add('active');
-                // Hide other sections
-                const sections = document.querySelectorAll('section');
-                sections.forEach(s => {
-                    if (s.id !== sectionId) {
-                        s.classList.remove('active');
-                    }
-                });
-                // Update nav
-                const navLinks = document.querySelectorAll('.nav-link');
-                navLinks.forEach(link => link.classList.remove('active'));
-                document.querySelector(`[onclick="showSection('${sectionId}')"]`).classList.add('active');
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
 
-                setTimeout(() => {
-                    section.scrollIntoView({ behavior: 'smooth' });
-                }, 100);
+        // Animate counters
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            let count = 0;
+            const increment = target / 100;
+            const updateCounter = () => {
+                if (count < target) {
+                    count += increment;
+                    counter.innerText = Math.ceil(count);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.innerText = target;
+                }
             }
-        }
+            updateCounter();
+        });
+
+        // Animate skill bars
+        const skillFills = document.querySelectorAll('.skill-bar-fill');
+        skillFills.forEach(bar => {
+            const width = bar.getAttribute('data-skill');
+            setTimeout(() => {
+                bar.style.width = width;
+            }, 500);
+        });
+
+
     </script>
 </body>
 
