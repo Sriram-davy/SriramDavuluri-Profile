@@ -1,4 +1,3 @@
-# SriramDavuluri-Profile
 
 # Hi, I'm Sriram Davuluri 👋
 
@@ -25,4 +24,4 @@
   - Circuit breaker, retries, and rate limiting
 
 ## 📫 Connect with Me
-- LinkedIn: <your-link>
+- LinkedIn: https://www.linkedin.com/in/sriram-davuluri-25764b125/
