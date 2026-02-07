@@ -4,837 +4,613 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sriram Davuluri - Full Stack Developer</title>
-    <link rel="icon" href="favicon.ico">
+    <title>Sriram Davuluri | Senior Consultant</title>
+    <meta name="description"
+        content="Portfolio of Sriram Davuluri, a Senior Consultant at Deloitte USI with 8+ years of experience in Java, Spring Boot, and Enterprise Architecture.">
+
+    <!-- SEO & Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
-            --color-primary: #32b8c6;
-            --color-primary-dark: #1d7480;
-            --color-bg: #0f1419;
-            --color-bg-light: #f4f4f4;
-            --color-surface: #1a1f27;
-            --color-surface-light: #ffffff;
-            --color-text: #e0e0e0;
-            --color-text-light: #333333;
-            --color-text-secondary: #a0a0a0;
-            --color-accent: #ff6b6b;
-            --transition: 0.3s ease;
+            --bg-color: #ffffff;
+            --bg-secondary: #f5f5f7;
+            --text-color: #1d1d1f;
+            --text-dim: #86868b;
+            --accent-color: #0071e3;
+            --nav-height: 48px;
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --border-color: rgba(0, 0, 0, 0.1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background-color: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            line-height: 1.5;
         }
 
-        body.light-mode {
-            background-color: var(--color-bg-light);
-            color: var(--color-text-light);
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: linear-gradient(135deg, #0f1419 0%, #1a2332 100%);
-            padding: 60px 20px;
-            border-bottom: 2px solid var(--color-primary);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            transition: background 0.3s;
-        }
-
-        body.light-mode header {
-            background: linear-gradient(135deg, #f4f4f4 0%, #d9d9d9 100%);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-
-        .profile-intro {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        .profile-intro h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-
-        body:not(.light-mode) .profile-intro h1 {
-            color: #fff;
-        }
-
-        .profile-intro .title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: 500;
-            color: var(--color-primary);
-        }
-
-        body.light-mode .profile-intro .title {
-            color: var(--color-primary-dark);
-        }
-
-        .profile-intro .location {
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--color-text-secondary);
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-primary {
-            background-color: var(--color-primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--color-primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(50, 184, 198, 0.3);
-        }
-
-        .btn-secondary {
-            background-color: var(--color-surface);
-            color: var(--color-primary);
-            border: 2px solid var(--color-primary);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--color-primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-            box-shadow: 0 10px 30px rgba(50, 184, 198, 0.3);
-        }
-
+        /* Nav */
         nav {
-            background-color: var(--color-surface);
-            padding: 15px 0;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 99;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s;
-        }
-
-        body.light-mode nav {
-            background-color: var(--color-surface-light);
+            width: 100%;
+            height: var(--nav-height);
+            background: var(--glass-bg);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 9999;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .nav-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            height: 100%;
             display: flex;
-            gap: 30px;
-            justify-content: center;
-            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
         }
 
-        .nav-link {
+        .logo {
+            font-weight: 600;
+            font-size: 20px;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s;
             font-weight: 500;
-            cursor: pointer;
-            padding: 5px 10px;
-            transition: color var(--transition);
         }
 
-        .nav-link.active {
-            color: var(--color-primary);
+        .nav-links a:hover {
+            color: var(--accent-color);
         }
 
-        body.light-mode .nav-link.active {
-            color: var(--color-primary-dark);
-        }
-
-        main {
-            padding: 60px 20px;
-        }
-
+        /* Sections */
         section {
-            margin-bottom: 60px;
-            display: none;
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding: 100px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        section.active {
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        /* Media Transition System */
+        .sticky-media-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            filter: grayscale(100%) brightness(1.2) contrast(1.1);
+            transition: opacity 1s ease-in-out, transform 2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .bg-image.active {
+            opacity: 0.15;
+            transform: scale(1);
+        }
+
+        /* Hero Redesign */
+        #hero {
+            text-align: left;
+            background: var(--bg-color);
+            padding: 120px 0;
+            min-height: auto;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 64px;
+            align-items: start;
+        }
+
+        .hero-left {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: softReveal 1.2s forwards 0.2s;
+        }
+
+        .hero-title {
+            font-size: clamp(48px, 8vw, 100px);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 0.95;
+            margin: 0;
+        }
+
+        .hero-right {
+            padding-top: 10px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: softReveal 1.2s forwards 0.5s;
+        }
+
+        .hero-description {
+            font-size: 21px;
+            line-height: 1.5;
+            color: var(--text-dim);
+            margin-bottom: 48px;
+            max-width: 500px;
+        }
+
+        .hero-description b {
+            color: var(--text-color);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat-box {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .stat-box:nth-child(odd) {
+            border-right: 1px solid var(--border-color);
+            padding-right: 24px;
+        }
+
+        .stat-box:nth-child(even) {
+            padding-left: 24px;
+        }
+
+        .stat-val {
+            font-size: 36px;
+            font-weight: 800;
             display: block;
-            animation: fadeIn 0.5s ease;
+            line-height: 1;
+            margin-bottom: 8px;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
+        .stat-label {
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-dim);
+        }
 
+        @keyframes softReveal {
             to {
                 opacity: 1;
+                transform: translateY(0);
             }
         }
 
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            padding-bottom: 15px;
+        /* Bento Grid */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+
+        .bento-item {
+            background: #fff;
+            padding: 40px;
+            border-radius: 32px;
+            border: 1px solid var(--border-color);
+            grid-column: span 6;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .bento-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .bento-item.full {
+            grid-column: span 12;
+        }
+
+        .bento-item.third {
+            grid-column: span 4;
+        }
+
+        .stat-number {
+            font-size: 64px;
+            font-weight: 800;
+            color: var(--accent-color);
+            display: block;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            font-size: clamp(32px, 6vw, 56px);
+            font-weight: 800;
+            margin-bottom: 32px;
+            letter-spacing: -0.01em;
+        }
+
+        .tag {
+            background: var(--bg-secondary);
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-right: 8px;
+            margin-bottom: 8px;
             display: inline-block;
-            border-bottom: 3px solid var(--color-primary);
         }
 
-        body.light-mode .section-title {
-            border-bottom-color: var(--color-primary-dark);
+        .tag.backend {
+            background: #e1f5fe;
+            color: #0288d1;
         }
 
-        .skill-bar {
-            background-color: #1a1f27;
-            border-radius: 25px;
-            margin: 8px 0;
-            height: 30px;
-            overflow: hidden;
+        .achievement-list {
+            list-style: none;
+        }
+
+        .achievement-list li {
             position: relative;
+            padding-left: 28px;
+            margin-bottom: 16px;
+            color: var(--text-dim);
+            font-size: 17px;
         }
 
-        .skill-bar-fill {
-            height: 100%;
-            width: 0;
-            border-radius: 25px;
-            color: white;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: width 1.5s ease-in-out;
-        }
-
-        .card {
-            background-color: var(--color-surface);
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            border-left: 4px solid var(--color-primary);
-            transition: all var(--transition);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        body.light-mode .card {
-            background-color: var(--color-surface-light);
-            border-left-color: var(--color-primary-dark);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .card-title {
-            font-size: 1.3rem;
-            color: var(--color-primary);
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-
-        body.light-mode .card-title {
-            color: var(--color-primary-dark);
-        }
-
-        .card-subtitle {
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-
-        .card-meta {
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            color: var(--color-text-secondary);
-        }
-
-        .card-description {
-            color: var(--color-text-secondary);
-            line-height: 1.7;
-        }
-
-        body.light-mode .card-description {
-            color: #555;
-        }
-
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .skill-category {
-            padding: 20px;
-            border-radius: 10px;
-            background-color: var(--color-surface);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            border-top: 3px solid var(--color-primary);
-        }
-
-        body.light-mode .skill-category {
-            background-color: var(--color-surface-light);
-            border-top-color: var(--color-primary-dark);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .skill-category h3 {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            color: var(--color-primary);
-        }
-
-        body.light-mode .skill-category h3 {
-            color: var(--color-primary-dark);
-        }
-
-        .skill-bar {
-            background-color: rgba(50, 184, 198, 0.15);
-            border-radius: 20px;
-            margin-bottom: 10px;
-            overflow: hidden;
-            height: 20px;
-        }
-
-        .skill-bar-fill {
-            height: 100%;
-            width: 0%;
-            background-color: var(--color-primary);
-            border-radius: 20px;
-            text-align: right;
-            padding-right: 10px;
-            line-height: 20px;
-            color: white;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: width 1.5s ease;
-        }
-
-        body.light-mode .skill-bar-fill {
-            background-color: var(--color-primary-dark);
-            color: white;
-        }
-
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .project-card {
-            background-color: var(--color-surface);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-        }
-
-        body.light-mode .project-card {
-            background-color: var(--color-surface-light);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            background: #666;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .project-content {
-            padding: 15px;
-        }
-
-        .project-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .project-tags {
-            font-size: 0.85rem;
-            margin-bottom: 10px;
-        }
-
-        .project-link {
-            color: var(--color-primary);
-            font-weight: 500;
-        }
-
-        body.light-mode .project-link {
-            color: var(--color-primary-dark);
+        .achievement-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: 800;
         }
 
         /* Footer */
         footer {
-            background-color: var(--color-surface);
-            padding: 40px 20px;
+            padding: 100px 40px;
             text-align: center;
-            border-top: 1px solid rgba(50, 184, 198, 0.2);
+            background: #000;
+            color: #fff;
         }
 
-        body.light-mode footer {
-            background-color: var(--color-surface-light);
-            border-color: rgba(0, 0, 0, 0.1);
+        .footer-link {
+            font-size: clamp(24px, 5vw, 48px);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 24px;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 20px;
+            gap: 40px;
+            margin-bottom: 64px;
         }
 
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--color-primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            transition: all 0.3s;
+        .social-links a {
+            color: #888;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
         }
 
-        .social-link:hover {
-            transform: translateY(-5px);
-            background-color: var(--color-primary-dark);
+        .social-links a:hover {
+            color: #fff;
         }
 
-        /* Animated counters */
-        .counter {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--color-primary);
+        html {
+            scroll-behavior: smooth;
         }
 
-        body.light-mode .counter {
-            color: var(--color-primary-dark);
-        }
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
 
-        /* Dark Mode Toggle Button */
-        #darkModeToggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px 15px;
-            background-color: var(--color-primary);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            z-index: 1000;
-        }
+            #hero {
+                padding: 80px 0;
+            }
 
-        #darkModeToggle:hover {
-            background-color: var(--color-primary-dark);
+            .bento-item,
+            .bento-item.third {
+                grid-column: span 12 !important;
+            }
+
+            .nav-links {
+                display: none;
+            }
         }
     </style>
 </head>
 
 <body>
-    <!-- Dark Mode Toggle -->
-    <button id="darkModeToggle">🌙</button>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="profile-intro">
-                    <h1>Sriram Davuluri</h1>
-                    <div class="title">Full Stack Developer</div>
-                    <div class="location">📍 Bangalore, India</div>
-                    <div class="cta-buttons">
-                        <a href="https://www.linkedin.com/in/sriram-davuluri-25764b125/" class="btn btn-primary"
-                            target="_blank">LinkedIn</a>
-                        <a href="https://github.com/Sriram-davy/SriramDavuluri-Profile" class="btn btn-primary"
-                            target="_blank">GitHub</a>
-                        <button class="btn btn-secondary" onclick="showSection('contact', event)">Contact Me</button>
-                    </div>
-                </div>
-                <div class="avatar">SD</div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Navigation -->
     <nav>
-        <div class="container">
-            <div class="nav-content">
-                <a class="nav-link active" onclick="showSection('about', event)">About</a>
-                <a class="nav-link" onclick="showSection('experience', event)">Experience</a>
-                <a class="nav-link" onclick="showSection('education', event)">Education</a>
-                <a class="nav-link" onclick="showSection('skills', event)">Skills</a>
-                <a class="nav-link" onclick="showSection('projects', event)">Projects</a>
-                <a class="nav-link" onclick="showSection('contact', event)">Contact</a>
+        <div class="nav-content">
+            <a href="#" class="logo">Sriram Davuluri</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#engineering">Stack</a>
+                <a href="#experience">Impact</a>
+                <a href="#contact">Contact</a>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="container">
-        <!-- About -->
-        <section id="about" class="active">
-            <h2 class="section-title">About Me</h2>
-            <div class="card">
-                <p>I'm a passionate Full Stack Developer with 8+ years of IT experience, specializing in designing and
-                    building scalable, cloud-native enterprise applications. I currently work at Deloitte USI, where I
-                    contribute to the development of high-impact systems by applying strong engineering fundamentals,
-                    clean architecture, and modern development practices.</p>
-                <br />
-                <p>My core expertise lies in backend development using Java and Spring Boot, where I design robust
-                    microservices and RESTful APIs that are secure, maintainable, and performance-oriented. I have
-                    hands-on experience integrating API management solutions such as Apigee to expose, secure, and
-                    monitor APIs at scale.</p>
-                <br />
-                <p>I place a strong emphasis on code quality and reliability, with extensive experience writing unit and
-                    integration tests using JUnit. I actively participate in code reviews, performance tuning, and
-                    refactoring efforts to ensure long-term maintainability and scalability of systems.</p>
-                <br />
-                <p>I am well-versed in Agile methodologies and regularly contribute to sprint planning, estimation, and
-                    technical decision-making.</p>
-                <p>Passionate about clean architecture, DevOps practices, automated testing, and mentoring junior
-                    developers. Currently exploring Agentic AI solutions.</p>
-                <br />
-                <p class="counter" data-target="8">0</p> Years Experience
+    <div class="sticky-media-container">
+        <img src="./apple_hero.png" class="bg-image active" id="bg0">
+        <img src="./apple_architecture.png" class="bg-image" id="bg1">
+        <img src="./apple_ui.png" class="bg-image" id="bg2">
+    </div>
+
+    <!-- Hero -->
+    <section id="hero">
+        <div class="container hero-container">
+            <div class="hero-left">
+                <h1 class="hero-title">Significant<br>Scale.<br>Resilient<br>Design.</h1>
             </div>
-        </section>
-
-        <!-- Experience -->
-        <section id="experience">
-            <h2 class="section-title">Experience</h2>
-            <div class="card">
-                <div class="card-title">Full Stack Developer</div>
-                <div class="card-subtitle">Deloitte USI | Current Role</div>
-                <div class="card-meta">8+ Years IT Experience</div>
-                <div class="card-description">
-                    • Developed enterprise-level microservices using Java & Spring Boot<br />
-                    • Built Angular frontend applications<br />
-                    • API Management (Apigee), JWT, OAuth<br />
-                    • Azure AD B2C custom policies, SSO integrations<br />
-                    • Agile methodology & sprint planning
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">Key Achievements</div>
-                <div class="card-description">
-                    ✓ Architected cloud-native microservices reducing infrastructure costs by 30%<br />
-                    ✓ Resolved critical penetration testing findings, strengthening application security and
-                    compliance<br />
-                    ✓ Designed and implemented RESTful APIs consumed by multiple downstream services<br />
-                    ✓ Built and maintained 10+ Spring Boot microservices with clean layered architecture<br />
-                    ✓ Improved API performance by optimizing database queries and caching strategies<br />
-                    ✓ Implemented JWT-based authentication and role-based access control across services<br />
-                    ✓ Integrated API Gateway (Apigee) to manage routing, security, and rate limiting<br />
-                    ✓ Increased code quality and reliability by writing comprehensive JUnit test suites<br />
-                    ✓ Containerized applications using Docker and deployed services on Kubernetes clusters<br />
-                    ✓ Developed responsive Angular interfaces integrated with backend microservices<br />
-                    ✓ Led cross-functional teams in agile sprint planning and on-time delivery<br />
-                    ✓ Automated enterprise data workflows using Excel macros and backend integrations<br />
-                    ✓ Reduced production defects through proactive code reviews and refactoring<br />
-                    ✓ Mentored junior developers on Java best practices, testing, and clean code principles<br />
-                    ✓ Actively adopted new technologies and best practices to improve system design and
-                    scalability<br />
-                </div>
-            </div>
-
-        </section>
-
-        <!-- Education -->
-        <section id="education">
-            <h2 class="section-title">Education</h2>
-            <div class="card">
-                <div class="card-title">Bachelor's Degree</div>
-                <div class="card-subtitle">IT / Computer Science</div>
-                <div class="card-description">Foundation in software development, database management, and core IT
-                    principles that laid the groundwork for 8+ years of professional experience.</div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-grid">
-
-                <div class="skill-category">
-                    <h3>🔧 Programming</h3>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="90%"
-                            style="background: linear-gradient(90deg, #ff6b6b, #f94d6a);">Java</div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="85%"
-                            style="background: linear-gradient(90deg, #6bc1ff, #4da6f9);">Spring Boot</div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="75%"
-                            style="background: linear-gradient(90deg, #f5d74d, #f9a14d);">Angular</div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="75%"
-                            style="background: linear-gradient(90deg, #ff9a6b, #f96f4d);">REST APIs</div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="60%"
-                            style="background: linear-gradient(90deg, #6bff95, #4df96a);">Python</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>☁️ Cloud / API</h3>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="85%"
-                            style="background: linear-gradient(90deg, #9d6bff, #6c4df9);">Apigee API Management</div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="60%"
-                            style="background: linear-gradient(90deg, #ff6bde, #f94df5);">Azure AD B2C</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>💾 Databases</h3>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="85%"
-                            style="background: linear-gradient(90deg, #6bffd6, #4df9b1);">Mongo DB</div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="80%"
-                            style="background: linear-gradient(90deg, #ffd36b, #f9b84d);">MySQL</div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="75%"
-                            style="background: linear-gradient(90deg, #6b8fff, #4d6ff9);">Postgres</div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="70%"
-                            style="background: linear-gradient(90deg, #ff6bb3, #f94d90);">Query Optimization</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>🏗️ Software Architecture</h3>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="90%"
-                            style="background: linear-gradient(90deg, #ffb36b, #f97b4d);">Microservices</div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="85%"
-                            style="background: linear-gradient(90deg, #6bffec, #4df9d1);">System Design</div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="80%"
-                            style="background: linear-gradient(90deg, #ff6b8f, #f94d7a);">Clean Code</div>
-                    </div>
-                    <div class="skill-bar">
-                        <div class="skill-bar-fill" data-skill="75%"
-                            style="background: linear-gradient(90deg, #9dff6b, #6cff4d);">Design Patterns</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>🏗️ Software Architecture</h3>
-                    <span class="skill-tag">Microservices</span>
-                    <span class="skill-tag">System Design</span>
-                    <span class="skill-tag">Clean Code</span>
-                    <span class="skill-tag">Design Patterns</span>
-                </div>
-
-                <div class="skill-category">
-                    <h3>📊 Project Management</h3>
-                    <span class="skill-tag">Agile</span>
-                    <span class="skill-tag">Scrum</span>
-                    <span class="skill-tag">Story Points</span>
-                    <span class="skill-tag">Sprint Planning</span>
-                </div>
-
-                <div class="skill-category">
-                    <h3>🎯 Other Tools</h3>
-                    <span class="skill-tag">GIT</span>
-                    <span class="skill-tag">JIRA</span>
-                    <span class="skill-tag">Dynatrace</span>
-                    <span class="skill-tag">Postman</span>
-                    <span class="skill-tag">Jenkins</span>
-                    <span class="skill-tag">Confluence</span>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- Projects -->
-        <section id="projects">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">Project 1</div>
-                    <div class="project-content">
-                        <div class="project-title">Microservices Demo</div>
-                        <div class="project-tags">Java, Spring Boot, Docker</div>
-                        <a href="#" class="project-link">GitHub →</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">Project 2</div>
-                    <div class="project-content">
-                        <div class="project-title">Angular Frontend</div>
-                        <div class="project-tags">Angular, REST API</div>
-                        <a href="#" class="project-link">GitHub →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact -->
-        <section id="contact"
-            style="background: linear-gradient(135deg, #1a1f27, #0f1419); padding: 60px 20px; padding-top: 30px;  border-radius: 15px;">
-            <h2 class="section-title" style="color: #fff;">Get in Touch</h2>
-            <div class="contact-card"
-                style="max-width: 700px; margin: 0 auto; background-color: #232832; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(50,184,198,0.3); text-align: center;">
-                <p style="font-size: 1.1rem; color: #e0e0e0; margin-bottom: 25px;">
-                    I'm always open to discussing new opportunities, tech innovations, or career growth. Let's connect!
+            <div class="hero-right">
+                <p class="hero-description">
+                    Passionate Full Stack Developer with 8+ years of expertise in designing and engineering high-impact
+                    distributed systems. Currently working as a Senior Consultant at <b>Deloitte USI</b>.
                 </p>
-        
-                <div class="social-links" style="display: flex; justify-content: center; gap: 25px; margin-bottom: 25px;">
-                    <a href="https://www.linkedin.com/in/sriram-davuluri-25764b125/" target="_blank"
-                        style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg,#32b8c6,#1d7480); color: white; font-weight: bold; font-size: 1.2rem; transition: all 0.3s ease;">
-                        in
-                    </a>
-                    <a href="mailto:sriram.davy@gmail.com"
-                        style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg,#ff6b6b,#f94d6a); color: white; font-size: 1.2rem; transition: all 0.3s ease;">
-                        ✉
-                    </a>
-                    <a href="https://github.com/Sriram-davy/SriramDavuluri-Profile" target="_blank"
-                        style="width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: linear-gradient(135deg,#9d6bff,#6c4df9); color: white; font-size: 1.2rem; transition: all 0.3s ease;">
-                        Github
-                    </a>
-                </div>       
-                <p style="color: #a0a0a0; font-size: 0.95rem; margin-bottom: 30px;">
-                    📧 Email: sriram.davy@gmail.com<br />
-                    🔗 LinkedIn: linkedin.com/in/sriram-davuluri-25764b125 <br/>
-                    🐱 GitHub: github.com/Sriram-davy
-                </p>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="stat-val">8+</span>
+                        <span class="stat-label">Years Exp</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-val">30%</span>
+                        <span class="stat-label">Efficiency</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-val">10+</span>
+                        <span class="stat-label">Services</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-val">Java</span>
+                        <span class="stat-label">Expertise</span>
+                    </div>
+                </div>
             </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/sriram-davuluri-25764b125/" class="social-link" target="_blank">in</a>
-            <!-- <a href="#" class="social-link" target="_blank">GH</a> -->
         </div>
-        <p>© 2026 Sriram Davuluri. Crafted with passion for technology.</p>
+    </section>
+
+    <!-- About Me -->
+    <section id="about">
+        <div class="container">
+            <div class="bento-grid">
+                <div class="bento-item full reveal">
+                    <h2 style="font-size: 32px; margin-bottom: 16px;">Professional Philosophy</h2>
+                    <p style="font-size: 21px; color: var(--text-dim);">
+                        As a Senior Consultant at <b>Deloitte USI</b>, I apply strong engineering fundamentals and clean
+                        architecture to solve complex business challenges at scale. I focus on building resilient
+                        systems that are both maintainable and high-performing.
+                    </p>
+                </div>
+                <div class="bento-item reveal" style="grid-column: span 8;">
+                    <h2>Core Focus</h2>
+                    <p style="font-size: 18px; color: var(--text-dim);">
+                        My expertise lies in backend development using <b>Java and Spring Boot</b>, designing robust
+                        microservices and secure APIs. I emphasize code quality, performance-oriented design, and
+                        long-term maintainability.
+                    </p>
+                </div>
+                <div class="bento-item reveal"
+                    style="grid-column: span 4; background: var(--accent-color); color: #fff; border: none;">
+                    <h3 style="font-size: 24px;">Innovation</h3>
+                    <p style="margin-top: 16px;">Exploring Agentic AI solutions and mentoring junior developers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engineering -->
+    <section id="engineering">
+        <div class="container">
+            <h2 class="reveal">The Engineering Stack.</h2>
+            <div class="bento-grid">
+                <div class="bento-item full reveal">
+                    <h3>Backend & Security</h3>
+                    <div style="margin-top: 24px;">
+                        <span class="tag backend">Java 17+</span>
+                        <span class="tag backend">Spring Boot</span>
+                        <span class="tag backend">Spring Security</span>
+                        <span class="tag backend">Apigee Gateway</span>
+                        <span class="tag backend">OAuth 2.0 / JWT</span>
+                        <span class="tag backend">Azure AD B2C Custom Policies</span>
+                        <span class="tag backend">MongoDB</span>
+                        <span class="tag backend">JUnit 5</span>
+                    </div>
+                </div>
+                <div class="bento-item reveal">
+                    <h3>Frontend Bridge</h3>
+                    <p style="color: var(--text-dim);">Angular, TypeScript, RxJS, and Responsive UI Design.</p>
+                </div>
+                <div class="bento-item reveal">
+                    <h3>Enterprise Patterns</h3>
+                    <p style="color: var(--text-dim);">Clean Architecture, SOLID Principles, and Scalable Service
+                        Design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="reveal">Experience & Impact.</h2>
+            <div class="bento-item full reveal">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 24px;">
+                    <h3 style="font-size: 28px;">Senior Consultant</h3>
+                    <span style="font-weight: 700; color: var(--accent-color);">Deloitte USI</span>
+                </div>
+                <ul class="achievement-list">
+                    <li>Architected scalable enterprise solutions reducing operational costs by <b>30%</b></li>
+                    <li>Built and maintained <b>10+ Spring Boot microservices</b> with clean architecture</li>
+                    <li>Resolved critical penetration testing findings, strengthening application security</li>
+                    <li>Integrated <b>Apigee API Gateway</b> to manage routing, security, and rate limiting</li>
+                    <li>Improved API performance through database optimization and caching strategies</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact - Template 2: Split Layout -->
+    <section id="contact" style="min-height: 90vh; background: #f5f5f7;">
+        <div class="container reveal">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+                <!-- Left Side -->
+                <div>
+                    <p
+                        style="color: var(--accent-color); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;">
+                        Get in Touch</p>
+                    <h2 style="font-size: 56px; margin-bottom: 32px; line-height: 1.1;">Let's build something amazing
+                        together.</h2>
+                    <p style="font-size: 20px; color: var(--text-dim); margin-bottom: 48px; line-height: 1.6;">
+                        Whether you have a question, a project idea, or just want to connect, I'd love to hear from you.
+                    </p>
+
+                    <div style="margin-bottom: 32px;">
+                        <div style="margin-bottom: 24px;">
+                            <p
+                                style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px;">
+                                Email</p>
+                            <a href="mailto:sriram.davy@gmail.com"
+                                style="font-size: 24px; font-weight: 700; color: var(--text-color); text-decoration: none; transition: color 0.3s;"
+                                onmouseover="this.style.color='var(--accent-color)'"
+                                onmouseout="this.style.color='var(--text-color)'">sriram.davy@gmail.com</a>
+                        </div>
+                        <div>
+                            <p
+                                style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px;">
+                                Follow</p>
+                            <div style="display: flex; gap: 16px;">
+                                <a href="https://www.linkedin.com/in/sriram-davuluri-25764b125/"
+                                    style="color: var(--text-color); text-decoration: none; font-weight: 600; transition: color 0.3s;"
+                                    onmouseover="this.style.color='var(--accent-color)'"
+                                    onmouseout="this.style.color='var(--text-color)'">LinkedIn</a>
+                                <span style="color: var(--text-dim);">•</span>
+                                <a href="https://github.com/Sriram-davy/SriramDavuluri-Profile"
+                                    style="color: var(--text-color); text-decoration: none; font-weight: 600; transition: color 0.3s;"
+                                    onmouseover="this.style.color='var(--accent-color)'"
+                                    onmouseout="this.style.color='var(--text-color)'">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Side - Visual Element -->
+                <div
+                    style="background: linear-gradient(135deg, var(--accent-color) 0%, #005bb5 100%); border-radius: 32px; padding: 80px 60px; text-align: center; color: #fff; position: relative; overflow: hidden;">
+                    <div style="position: relative; z-index: 2;">
+                        <div style="font-size: 64px; font-weight: 800; margin-bottom: 16px;">Open</div>
+                        <p style="font-size: 18px; opacity: 0.9;">to New Opportunities</p>
+                        <div style="margin-top: 48px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.2);">
+                            <div style="font-size: 48px; font-weight: 800; margin-bottom: 16px;">Focus</div>
+                            <p style="font-size: 16px; opacity: 0.9;">Engineering Excellence</p>
+                        </div>
+                    </div>
+                    <div
+                        style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%;">
+                    </div>
+                    <div
+                        style="position: absolute; bottom: -80px; left: -80px; width: 250px; height: 250px; background: rgba(255,255,255,0.05); border-radius: 50%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/sriram-davuluri-25764b125/">LinkedIn</a>
+                <a href="https://github.com/Sriram-davy/SriramDavuluri-Profile">GitHub</a>
+                <a href="mailto:sriram.davy@gmail.com">Email</a>
+            </div>
+            <p style="color: #666; font-size: 13px;">© 2026 Sriram Davuluri. Built for Scale.</p>
+        </div>
     </footer>
 
     <script>
-        // Dark mode toggle
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('light-mode');
-        });
+        const sections = document.querySelectorAll('section');
+        const bgs = document.querySelectorAll('.bg-image');
 
-        // Navigation
-        function showSection(id, event) {
-            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-            document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-            event.target.classList.add('active');
-        }
+        const observerOptions = { threshold: 0.3 };
+        const sectionBgMap = { 'hero': 0, 'about': 0, 'engineering': 1, 'experience': 2, 'contact': 2 };
 
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Animate counters
-        const counters = document.querySelectorAll('.counter');
-        counters.forEach(counter => {
-            const target = +counter.getAttribute('data-target');
-            let count = 0;
-            const increment = target / 100;
-            const updateCounter = () => {
-                if (count < target) {
-                    count += increment;
-                    counter.innerText = Math.ceil(count);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    counter.innerText = target;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+                    const bgIdx = sectionBgMap[entry.target.id];
+                    bgs.forEach((bg, i) => bg.classList.toggle('active', i === bgIdx));
                 }
-            }
-            updateCounter();
+            });
+        }, observerOptions);
+
+        sections.forEach(s => observer.observe(s));
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const activeBg = document.querySelector('.bg-image.active');
+            if (activeBg) activeBg.style.transform = `scale(${1 + scrolled * 0.00003})`;
         });
-
-        // Animate skill bars
-        const skillFills = document.querySelectorAll('.skill-bar-fill');
-        skillFills.forEach(bar => {
-            const width = bar.getAttribute('data-skill');
-            setTimeout(() => {
-                bar.style.width = width;
-            }, 500);
-        });
-
-
     </script>
 </body>
 
