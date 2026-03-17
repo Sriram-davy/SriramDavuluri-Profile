@@ -4,838 +4,363 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sriram Davuluri | Senior Consultant</title>
+    <title>Sriram Davuluri | Senior Full Stack Engineer</title>
     <meta name="description"
         content="Portfolio of Sriram Davuluri, a Senior Consultant at Deloitte USI with 8+ years of experience in Java, Spring Boot, and Enterprise Architecture.">
 
     <!-- SEO & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-color: #ffffff;
-            --bg-secondary: #fbfbfd;
-            --text-color: #1d1d1f;
-            --text-dim: #6e6e73;
-            --accent-color: #0071e3;
-            --nav-height: 52px;
-            --glass-bg: rgba(255, 255, 255, 0.72);
-            --border-color: rgba(0, 0, 0, 0.08);
-            --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
-            --card-hover-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            --mobile-menu-bg: rgba(255, 255, 255, 0.98);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, system-ui, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-            line-height: 1.5;
-        }
-
-        /* Nav */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            height: var(--nav-height);
-            background: var(--glass-bg);
-            backdrop-filter: saturate(180%) blur(20px);
-            z-index: 9999;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .nav-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 24px;
-        }
-
-        .logo {
-            font-weight: 600;
-            font-size: 20px;
-            color: var(--text-color);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-        }
-
-        .nav-links a {
-            font-size: 13px;
-            color: var(--text-dim);
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 4px;
-            cursor: pointer;
-            z-index: 10001;
-            padding: 8px;
-        }
-
-        .menu-toggle span {
-            width: 22px;
-            height: 2px;
-            background: var(--text-color);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        /* Mobile Menu Overlay */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background: var(--mobile-menu-bg);
-            z-index: 10000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .mobile-menu.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .mobile-menu a {
-            position: relative;
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--text-color);
-            text-decoration: none;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: inline-block;
-        }
-
-        .mobile-menu a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #000;
-            transition: width 0.3s ease;
-            opacity: 0.6;
-        }
-
-        .mobile-menu a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu.active a {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .mobile-menu a:nth-child(1) {
-            transition-delay: 0.1s;
-        }
-
-        .mobile-menu a:nth-child(2) {
-            transition-delay: 0.2s;
-        }
-
-        .mobile-menu a:nth-child(3) {
-            transition-delay: 0.3s;
-        }
-
-        .mobile-menu a:nth-child(4) {
-            transition-delay: 0.4s;
-        }
-
-        .menu-toggle.active span:nth-child(1) {
-            transform: translateY(6px) rotate(45deg);
-        }
-
-        .menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active span:nth-child(3) {
-            transform: translateY(-6px) rotate(-45deg);
-        }
-
-        /* Scroll to Top */
-        #back-to-top {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 50px;
-            height: 50px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            box-shadow: var(--card-shadow);
-        }
-
-        #back-to-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        #back-to-top:hover {
-            transform: translateY(-5px);
-            background: #fff;
-        }
-
-        /* Sections */
-        section {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-            padding: 100px 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .container {
-            max-width: 1100px;
-            width: 100%;
-            z-index: 10;
-        }
-
-        /* Media Transition System */
-        .sticky-media-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .bg-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            filter: grayscale(100%) brightness(1.2) contrast(1.1);
-            transition: opacity 1s ease-in-out, transform 2s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .bg-image.active {
-            opacity: 0.15;
-            transform: scale(1);
-        }
-
-        /* Hero Redesign */
-        #hero {
-            text-align: left;
-            background: var(--bg-color);
-            padding: 120px 0;
-            min-height: auto;
-        }
-
-        .hero-container {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 64px;
-            align-items: start;
-        }
-
-        .hero-left {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: softReveal 1.2s forwards 0.2s;
-        }
-
-        .hero-title {
-            font-size: clamp(48px, 8vw, 100px);
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            line-height: 0.95;
-            margin: 0;
-        }
-
-        .hero-right {
-            padding-top: 10px;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: softReveal 1.2s forwards 0.5s;
-        }
-
-        .hero-description {
-            font-size: 21px;
-            line-height: 1.5;
-            color: var(--text-dim);
-            margin-bottom: 48px;
-            max-width: 500px;
-        }
-
-        .hero-description b {
-            color: var(--text-color);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .stat-box {
-            padding: 24px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .stat-box:nth-child(odd) {
-            border-right: 1px solid var(--border-color);
-            padding-right: 24px;
-        }
-
-        .stat-box:nth-child(even) {
-            padding-left: 24px;
-        }
-
-        .stat-val {
-            font-size: 36px;
-            font-weight: 800;
-            display: block;
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-dim);
-        }
-
-        @keyframes softReveal {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Bento Grid */
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 24px;
-        }
-
-        .bento-item {
-            background: #fff;
-            padding: 48px;
-            border-radius: 28px;
-            border: 1px solid var(--border-color);
-            grid-column: span 6;
-            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: var(--card-shadow);
-        }
-
-        .bento-item:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--card-hover-shadow);
-        }
-
-        .bento-item.full {
-            grid-column: span 12;
-        }
-
-        .bento-item.third {
-            grid-column: span 4;
-        }
-
-        .stat-number {
-            font-size: 64px;
-            font-weight: 800;
-            color: var(--accent-color);
-            display: block;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        h2 {
-            font-size: clamp(32px, 6vw, 56px);
-            font-weight: 800;
-            margin-bottom: 32px;
-            letter-spacing: -0.01em;
-        }
-
-        .tag {
-            background: var(--bg-secondary);
-            padding: 10px 20px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 14px;
-            margin-right: 8px;
-            margin-bottom: 8px;
-            display: inline-block;
-        }
-
-        .tag.backend {
-            background: #e1f5fe;
-            color: #0288d1;
-        }
-
-        .achievement-list {
-            list-style: none;
-        }
-
-        .achievement-list li {
-            position: relative;
-            padding-left: 28px;
-            margin-bottom: 16px;
-            color: var(--text-dim);
-            font-size: 17px;
-        }
-
-        .achievement-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-weight: 800;
-        }
-
-        /* Footer */
-        footer {
-            padding: 100px 40px;
-            text-align: center;
-            background: #000;
-            color: #fff;
-        }
-
-        .footer-link {
-            font-size: clamp(24px, 5vw, 48px);
-            color: #fff;
-            text-decoration: none;
-            font-weight: 800;
-            display: block;
-            margin-bottom: 24px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 64px;
-        }
-
-        .social-links a {
-            color: #888;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .social-links a:hover {
-            color: #fff;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        @media (max-width: 900px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            #hero {
-                padding: 80px 0;
-            }
-
-            .bento-item,
-            .bento-item.third {
-                grid-column: span 12 !important;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
     <nav>
-        <div class="nav-content">
-            <a href="#" class="logo">Sriram Davuluri</a>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#engineering">Stack</a>
-                <a href="#experience">Impact</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="menu-toggle" id="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+        <a href="#" class="nav-logo">Sriram Davuluri</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#engineering">Stack</a>
+            <a href="#experience">Impact</a>
+            <a href="#contact">Contact</a>
         </div>
     </nav>
 
-    <div class="mobile-menu" id="mobile-menu">
-        <a href="#about">About</a>
-        <a href="#engineering">Stack</a>
-        <a href="#experience">Impact</a>
-        <a href="#contact">Contact</a>
-    </div>
-
-    <button id="back-to-top" aria-label="Back to Top">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M18 15l-6-6-6 6"></path>
-        </svg>
-    </button>
-
-    <div class="sticky-media-container">
-        <img src="./apple_hero.png" class="bg-image active" id="bg0">
-        <img src="./apple_architecture.png" class="bg-image" id="bg1">
-        <img src="./apple_ui.png" class="bg-image" id="bg2">
-    </div>
-
-    <!-- Hero -->
     <section id="hero">
-        <div class="container hero-container">
-            <div class="hero-left">
-                <h1 class="hero-title">Significant<br>Scale.<br>Resilient<br>Design.</h1>
+        <div class="hero-layout">
+            <div class="hero-portrait-col" id="portrait-col">
+                <!-- Aura orb -->
+                <div class="portrait-aura"></div>
+
+                <!-- Actual photo -->
+                <div class="portrait-frame">
+                    <img src="portrait.jpeg" alt="Sriram Davuluri" class="portrait-photo" id="portrait-img" />
+                    <!-- Subtle gradient fade at bottom of photo -->
+                    <div class="portrait-fade-bottom"></div>
+                </div>
+
+                <!-- Floating badges -->
+                <div class="float-badge badge-1">
+                    <span class="badge-dot"></span>
+                    <span>8+ Years Experience</span>
+                </div>
+                <div class="float-badge badge-2">
+                    <span class="badge-icon">🏢</span>
+                    <span>Deloitte USI</span>
+                </div>
+                <div class="float-badge badge-3">
+                    <span class="badge-dot green"></span>
+                    <span>Open to Opportunities</span>
+                </div>
             </div>
-            <div class="hero-right">
-                <p class="hero-description">
-                    Passionate Full Stack Developer with 8+ years of expertise in designing and engineering high-impact
-                    distributed systems. Currently working as a Senior Consultant at <b>Deloitte USI</b>.
-                </p>
-                <div class="stats-grid">
-                    <div class="stat-box">
-                        <span class="stat-val">8+</span>
-                        <span class="stat-label">Years Exp</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-val">30%</span>
-                        <span class="stat-label">Efficiency</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-val">10+</span>
-                        <span class="stat-label">Services</span>
-                    </div>
-                    <div class="stat-box">
-                        <span class="stat-val">Java</span>
-                        <span class="stat-label">Expertise</span>
-                    </div>
+
+            <div class="hero-text-col">
+                <span class="hero-eyebrow">Senior Consultant · Full Stack Engineer</span>
+                <h1 class="hero-title">Significant<br><em>Scale.</em><br>Resilient<br><em>Design.</em></h1>
+                <p class="hero-sub">Passionate Full Stack Developer with 8+ years of expertise designing and engineering high-impact distributed systems. Currently <strong>Senior Consultant at Deloitte USI</strong>.</p>
+                <div class="hero-cta-row">
+                    <a href="#experience" class="btn-primary">View Impact</a>
+                    <a href="#contact" class="btn-ghost">Let's Connect ↗</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat"><strong>8+</strong><span>Years Exp</span></div>
+                    <div class="stat"><strong>30%</strong><span>Efficiency Gained</span></div>
+                    <div class="stat"><strong>10+</strong><span>Microservices</span></div>
+                    <div class="stat"><strong>Java</strong><span>Expertise</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Me -->
+    <!-- About Section -->
     <section id="about">
-        <div class="container">
-            <div class="bento-grid">
-                <div class="bento-item full reveal">
-                    <h2 style="font-size: 32px; margin-bottom: 16px;">Professional Philosophy</h2>
-                    <p style="font-size: 21px; color: var(--text-dim);">
-                        As a Senior Consultant at <b>Deloitte USI</b>, I apply strong engineering fundamentals and clean
-                        architecture to solve complex business challenges at scale. I focus on building resilient
-                        systems that are both maintainable and high-performing.
-                    </p>
+        <div class="section-inner">
+            <div class="section-label-row">
+                <span class="section-tag">About</span>
+            </div>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <h2>Professional<br><em>Philosophy</em></h2>
+                    <p>As a Senior Consultant at <strong>Deloitte USI</strong>, I apply strong engineering fundamentals and clean architecture to solve complex business challenges at scale. I focus on building resilient systems that are both maintainable and high-performing.</p>
+                    <p>My expertise lies in backend development using <strong>Java 17+ and Spring Boot</strong>, architecting robust microservices and secure financial ecosystems. I emphasise performance-oriented design, security-first development, and long-term fleet maintainability.</p>
                 </div>
-                <div class="bento-item reveal" style="grid-column: span 8;">
-                    <h2>Core Focus</h2>
-                    <p style="font-size: 19px; color: var(--text-dim); line-height: 1.6;">
-                        My expertise lies in backend development using <b>Java 17+ and Spring Boot</b>, architecting
-                        robust
-                        microservices and secure financial ecosystems. I emphasize performance-oriented design,
-                        security-first development, and long-term fleet maintainability.
-                    </p>
-                </div>
-                <div class="bento-item reveal"
-                    style="grid-column: span 4; background: var(--accent-color); color: #fff; border: none; display: flex; flex-direction: column; justify-content: center;">
-                    <h3 style="font-size: 24px;">Lead Strategy</h3>
-                    <p style="margin-top: 16px; font-size: 16px; opacity: 0.9;">Leading technical initiatives and
-                        mentoring teams to deliver enterprise-grade software at speed.</p>
-                </div>
-                <!-- Certifications -->
-                <div class="bento-item full reveal" style="background: #fbfbfd;">
-                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-                        <div style="width: 40px; height: 40px; background: #000; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 800;">A</div>
-                        <h2 style="margin: 0; font-size: 28px;">Certifications</h2>
+                <div class="about-cards reveal">
+                    <div class="about-card">
+                        <div class="about-card-icon">⚙️</div>
+                        <h4>Core Focus</h4>
+                        <p>Backend-first engineering. Microservices, clean architecture, and security at enterprise scale.</p>
                     </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
-                        <div style="padding: 24px; background: #fff; border: 1px solid var(--border-color); border-radius: 16px; display: flex; flex-direction: column; gap: 16px;">
-                            <div>
-                                <h4 style="font-size: 18px; font-weight: 700; color: var(--text-color);">Anthropic AI Fluency Framework</h4>
-                                <p style="font-size: 14px; color: var(--text-dim); margin-top: 4px;">Mastery of LLM fundamentals and prompt engineering frameworks.</p>
-                            </div>
-                        </div>
-                        <div style="padding: 24px; background: #fff; border: 1px solid var(--border-color); border-radius: 16px; display: flex; flex-direction: column; gap: 16px;">
-                            <div>
-                                <h4 style="font-size: 18px; font-weight: 700; color: var(--text-color);">Anthropic Claude 101</h4>
-                                <p style="font-size: 14px; color: var(--text-dim); margin-top: 4px;">Advanced
-                                    certification in Anthropic's Claude ecosystem and capabilities.</p>
-                            </div>
-                        </div>
-
+                    <div class="about-card">
+                        <div class="about-card-icon">🧭</div>
+                        <h4>Lead Strategy</h4>
+                        <p>Leading technical initiatives and mentoring teams to deliver enterprise-grade software at speed.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Engineering -->
+    <div class="marquee-divider">
+        <div class="marquee-track">
+            <span>Java 17+</span><span>·</span>
+            <span>Spring Boot</span><span>·</span>
+            <span>Distributed Systems</span><span>·</span>
+            <span>Fortune 500</span><span>·</span>
+            <span>Deloitte USI</span><span>·</span>
+            <span>Angular</span><span>·</span>
+            <span>Microservices</span><span>·</span>
+            <span>Clean Architecture</span><span>·</span>
+            <span>Security-First</span><span>·</span>
+        </div>
+    </div>
+
+    <!-- Tech Scroll Section -->
+    <section id="tech-scroll">
+        <div class="tech-scroll-header">
+            <h2>The Engineering Stack.</h2>
+            <p>Technologies I architect, build, and ship with daily.</p>
+        </div>
+        <div class="ticker-stage">
+            <div class="ticker-row row-fwd">
+                <div class="ticker-track">
+                    <span class="chip chip-blue"><img src="https://cdn.simpleicons.org/openjdk/1d4ed8" onerror="this.style.display='none'" /> Java 17+</span>
+                    <span class="chip chip-blue"><img src="https://cdn.simpleicons.org/springboot/1d4ed8" onerror="this.style.display='none'" /> Spring Boot</span>
+                    <span class="chip chip-blue"><img src="https://cdn.simpleicons.org/springsecurity/1d4ed8" onerror="this.style.display='none'" /> Spring Security</span>
+                    <span class="chip chip-blue"><img src="https://cdn.simpleicons.org/apachemaven/1d4ed8" onerror="this.style.display='none'" /> Maven</span>
+                    <span class="chip chip-blue"><img src="https://cdn.simpleicons.org/hibernate/1d4ed8" onerror="this.style.display='none'" /> Hibernate</span>
+                    <span class="chip chip-blue"><img src="https://cdn.simpleicons.org/junit5/1d4ed8" onerror="this.style.display='none'" /> JUnit 5</span>
+                    <span class="chip chip-blue"><img src="https://cdn.simpleicons.org/gradle/1d4ed8" onerror="this.style.display='none'" /> Gradle</span>
+                    <span class="chip chip-blue">🔐 OAuth 2.0 / JWT</span>
+                    <span class="chip chip-blue">🛡️ Apigee Gateway</span>
+                    <span class="chip chip-blue">🏗️ REST APIs</span>
+                </div>
+            </div>
+            <div class="ticker-row row-rev">
+                <div class="ticker-track">
+                    <span class="chip chip-indigo"><img src="https://cdn.simpleicons.org/angular/4338ca" onerror="this.style.display='none'" /> Angular 17</span>
+                    <span class="chip chip-indigo"><img src="https://cdn.simpleicons.org/typescript/4338ca" onerror="this.style.display='none'" /> TypeScript</span>
+                    <span class="chip chip-indigo"><img src="https://cdn.simpleicons.org/reactivex/4338ca" onerror="this.style.display='none'" /> RxJS</span>
+                    <span class="chip chip-indigo"><img src="https://cdn.simpleicons.org/html5/4338ca" onerror="this.style.display='none'" /> HTML5</span>
+                    <span class="chip chip-indigo"><img src="https://cdn.simpleicons.org/css3/4338ca" onerror="this.style.display='none'" /> CSS3</span>
+                    <span class="chip chip-indigo"><img src="https://cdn.simpleicons.org/mongodb/4338ca" onerror="this.style.display='none'" /> MongoDB</span>
+                    <span class="chip chip-indigo"><img src="https://cdn.simpleicons.org/postgresql/4338ca" onerror="this.style.display='none'" /> PostgreSQL</span>
+                    <span class="chip chip-indigo"><img src="https://cdn.simpleicons.org/redis/4338ca" onerror="this.style.display='none'" /> Redis</span>
+                    <span class="chip chip-indigo"><img src="https://cdn.simpleicons.org/nodedotjs/4338ca" onerror="this.style.display='none'" /> Node.js</span>
+                    <span class="chip chip-indigo"><img src="https://cdn.simpleicons.org/sass/4338ca" onerror="this.style.display='none'" /> SCSS</span>
+                </div>
+            </div>
+            <div class="ticker-row row-fwd">
+                <div class="ticker-track">
+                    <span class="chip chip-violet"><img src="https://cdn.simpleicons.org/microsoftazure/6d28d9" onerror="this.style.display='none'" /> Azure AD B2C</span>
+                    <span class="chip chip-violet"><img src="https://cdn.simpleicons.org/docker/6d28d9" onerror="this.style.display='none'" /> Docker</span>
+                    <span class="chip chip-violet"><img src="https://cdn.simpleicons.org/kubernetes/6d28d9" onerror="this.style.display='none'" /> Kubernetes</span>
+                    <span class="chip chip-violet"><img src="https://cdn.simpleicons.org/git/6d28d9" onerror="this.style.display='none'" /> Git</span>
+                    <span class="chip chip-violet"><img src="https://cdn.simpleicons.org/github/6d28d9" onerror="this.style.display='none'" /> GitHub</span>
+                    <span class="chip chip-violet"><img src="https://cdn.simpleicons.org/azuredevops/6d28d9" onerror="this.style.display='none'" /> Azure DevOps</span>
+                    <span class="chip chip-violet">🏛️ Clean Architecture</span>
+                    <span class="chip chip-violet">🔄 Domain-Driven Design</span>
+                    <span class="chip chip-violet">⚡ CI/CD Pipelines</span>
+                    <span class="chip chip-violet">📐 SOLID Principles</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Glass Section -->
+    <section id="glass">
+        <div class="glass-bg-orbs"></div>
+        <div class="section-inner">
+            <div class="section-label-row"><span class="section-tag">Credentials</span></div>
+            <h2 class="reveal">Recognition &amp; <em>Approach</em></h2>
+            <div class="glass-grid">
+                <div class="glass-card reveal">
+                    <div class="glass-card-icon">🤖</div>
+                    <h3>Anthropic AI Fluency Framework</h3>
+                    <p>Mastery of LLM fundamentals and prompt engineering frameworks.</p>
+                    <span class="cert-badge">Certified</span>
+                </div>
+                <div class="glass-card reveal">
+                    <div class="glass-card-icon">⚡</div>
+                    <h3>Anthropic Claude 101</h3>
+                    <p>Advanced certification in Anthropic's Claude ecosystem and capabilities.</p>
+                    <span class="cert-badge">Certified</span>
+                </div>
+                <div class="glass-card reveal highlight">
+                    <div class="glass-card-icon">🎯</div>
+                    <h3>Core Focus</h3>
+                    <p>Performance-oriented design. Security-first development. Long-term fleet maintainability. Built to last, engineered to scale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section id="stats-bar">
+        <div class="stats-bar-inner">
+            <div class="stat-big reveal">
+                <span class="count-up" data-target="8">0</span><span class="stat-suffix">+</span>
+                <p>Years of Engineering</p>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-big reveal">
+                <span class="count-up" data-target="30">0</span><span class="stat-suffix">%</span>
+                <p>Operational Efficiency Gained</p>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-big reveal">
+                <span class="count-up" data-target="10">0</span><span class="stat-suffix">+</span>
+                <p>Microservices Engineered</p>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-big reveal">
+                <span class="count-up" data-target="500">0</span><span class="stat-suffix">+</span>
+                <p>Fortune 500 Scale</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engineering Section -->
     <section id="engineering">
-        <div class="container">
-            <h2 class="reveal">The Engineering Stack.</h2>
-            <div class="bento-grid">
-                <div class="bento-item full reveal">
-                    <h3>Backend & Security</h3>
-                    <div style="margin-top: 24px;">
-                        <span class="tag backend">Java 17+</span>
-                        <span class="tag backend">Spring Boot</span>
-                        <span class="tag backend">Spring Security</span>
-                        <span class="tag backend">Apigee Gateway</span>
-                        <span class="tag backend">OAuth 2.0 / JWT</span>
-                        <span class="tag backend">Azure AD B2C Custom Policies</span>
-                        <span class="tag backend">MongoDB</span>
-                        <span class="tag backend">JUnit 5</span>
-                    </div>
+        <div class="section-inner">
+            <span class="section-tag reveal">Engineering</span>
+            <h2 class="reveal">Built on Strong <em>Foundations.</em></h2>
+            <div class="stack-grid">
+                <div class="stack-card reveal">
+                    <h4>Backend &amp; Security</h4>
+                    <ul>
+                        <li>Java 17+</li><li>Spring Boot</li><li>Spring Security</li>
+                        <li>Apigee Gateway</li><li>OAuth 2.0 / JWT</li>
+                        <li>Azure AD B2C Custom Policies</li><li>MongoDB</li><li>JUnit 5</li>
+                    </ul>
                 </div>
-                <div class="bento-item reveal">
-                    <h3>Frontend Bridge</h3>
-                    <p style="color: var(--text-dim);">Angular, TypeScript, RxJS, and Responsive UI Design.</p>
+                <div class="stack-card reveal">
+                    <h4>Frontend Bridge</h4>
+                    <ul>
+                        <li>Angular</li><li>TypeScript</li><li>RxJS</li>
+                        <li>Responsive UI Design</li>
+                    </ul>
                 </div>
-                <div class="bento-item reveal">
-                    <h3>Enterprise Patterns</h3>
-                    <p style="color: var(--text-dim);">Clean Architecture, SOLID Principles, and Scalable Service
-                        Design.</p>
+                <div class="stack-card reveal">
+                    <h4>Enterprise Patterns</h4>
+                    <ul>
+                        <li>Clean Architecture</li><li>SOLID Principles</li>
+                        <li>Domain-Driven Design</li><li>Microservices</li>
+                        <li>Scalable Service Design</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Impact -->
+    <!-- Experience Section -->
     <section id="experience">
-        <div class="container">
-            <h2 class="reveal">Experience & Impact.</h2>
-            <div class="bento-item full reveal">
-                <div
-                    style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 24px;">
-                    <h3 style="font-size: 28px;">Senior Consultant</h3>
-                    <span style="font-weight: 700; color: var(--accent-color);">Deloitte USI</span>
+        <div class="section-inner">
+            <span class="section-tag reveal">Impact</span>
+            <h2 class="reveal">Experience &amp; <em>Impact.</em></h2>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Senior Consultant</h3>
+                        <span class="company">Deloitte USI</span>
+                        <ul>
+                            <li>Architected and delivered scalable enterprise solutions for Fortune 500 clients, reducing operational overhead by <strong>30%</strong>.</li>
+                            <li>Engineered and orchestrated <strong>10+ Spring Boot microservices</strong> utilising Clean Architecture and Domain-Driven Design (DDD).</li>
+                            <li>Led security remediation efforts, resolving high-impact penetration testing findings and hardening application posture.</li>
+                            <li>Implemented <strong>Apigee API Gateway</strong> strategies for advanced traffic management, security, and developer ecosystem enablement.</li>
+                            <li>Optimised high-traffic APIs through strategic database indexing, query stabilisation, and multi-tier caching, achieving significant latency reduction.</li>
+                            <li>Spearheaded migration to <strong>Azure AD B2C</strong>, developing custom policies for complex authentication flows.</li>
+                        </ul>
+                    </div>
                 </div>
-                <ul class="achievement-list">
-                    <li>Architected and delivered scalable enterprise solutions for Fortune 500 clients, reducing
-                        operational overhead by <b>30%</b>.</li>
-                    <li>Engineered and orchestrated <b>10+ Spring Boot microservices</b> utilizing Clean Architecture
-                        and Domain-Driven Design (DDD).</li>
-                    <li>Lead security remediation efforts, resolving high-impact penetration testing findings and
-                        hardening application posture.</li>
-                    <li>Implemented <b>Apigee API Gateway</b> strategies for advanced traffic management, security, and
-                        developer ecosystem enablement.</li>
-                    <li>Optimized high-traffic APIs through strategic database indexing, query stabilization, and
-                        multi-tier caching, achieving significant latency reduction.</li>
-                    <li>Spearheaded the migration to <b>Azure AD B2C</b>, developing custom policies for complex
-                        authentication flows.</li>
-                </ul>
             </div>
         </div>
     </section>
 
-    <!-- Contact - Template 2: Split Layout -->
-    <section id="contact" style="min-height: 90vh; background: #f5f5f7;">
-        <div class="container reveal">
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
-                <!-- Left Side -->
-                <div>
-                    <p
-                        style="color: var(--accent-color); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;">
-                        Get in Touch</p>
-                    <h2 style="font-size: 56px; margin-bottom: 32px; line-height: 1.1;">Let's build something amazing
-                        together.</h2>
-                    <p style="font-size: 20px; color: var(--text-dim); margin-bottom: 48px; line-height: 1.6;">
-                        Whether you have a question, a project idea, or just want to connect, I'd love to hear from you.
-                    </p>
+    <!-- Status Bar -->
+    <div class="status-bar">
+        <div class="status-inner">
+            <span class="status-pulse"></span>
+            <span>Currently open to Senior Engineering & Consultant roles — let's build something exceptional.</span>
+            <a href="mailto:sriram.davy@gmail.com" class="status-cta">Get in touch →</a>
+        </div>
+    </div>
 
-                    <div style="margin-bottom: 32px;">
-                        <div style="margin-bottom: 24px;">
-                            <p
-                                style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px;">
-                                Email</p>
-                            <a href="mailto:sriram.davy@gmail.com"
-                                style="font-size: 24px; font-weight: 700; color: var(--text-color); text-decoration: none; transition: color 0.3s;"
-                                onmouseover="this.style.color='var(--accent-color)'"
-                                onmouseout="this.style.color='var(--text-color)'">sriram.davy@gmail.com</a>
-                        </div>
-                        <div>
-                            <p
-                                style="font-size: 13px; font-weight: 700; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px;">
-                                Follow</p>
-                            <div style="display: flex; gap: 16px;">
-                                <a href="https://www.linkedin.com/in/sriram-davuluri-25764b125/"
-                                    style="color: var(--text-color); text-decoration: none; font-weight: 600; transition: color 0.3s;"
-                                    onmouseover="this.style.color='var(--accent-color)'"
-                                    onmouseout="this.style.color='var(--text-color)'">LinkedIn</a>
-                                <span style="color: var(--text-dim);">•</span>
-                                <a href="https://github.com/Sriram-davy/SriramDavuluri-Profile"
-                                    style="color: var(--text-color); text-decoration: none; font-weight: 600; transition: color 0.3s;"
-                                    onmouseover="this.style.color='var(--accent-color)'"
-                                    onmouseout="this.style.color='var(--text-color)'">GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Side - Visual Element -->
-                <div
-                    style="background: linear-gradient(135deg, var(--accent-color) 0%, #005bb5 100%); border-radius: 32px; padding: 80px 60px; text-align: center; color: #fff; position: relative; overflow: hidden;">
-                    <div style="position: relative; z-index: 2;">
-                        <div style="font-size: 64px; font-weight: 800; margin-bottom: 16px;">Open</div>
-                        <p style="font-size: 18px; opacity: 0.9;">to New Opportunities</p>
-                        <div style="margin-top: 48px; padding-top: 48px; border-top: 1px solid rgba(255,255,255,0.2);">
-                            <div style="font-size: 48px; font-weight: 800; margin-bottom: 16px;">Focus</div>
-                            <p style="font-size: 16px; opacity: 0.9;">Engineering Excellence</p>
-                        </div>
-                    </div>
-                    <div
-                        style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%;">
-                    </div>
-                    <div
-                        style="position: absolute; bottom: -80px; left: -80px; width: 250px; height: 250px; background: rgba(255,255,255,0.05); border-radius: 50%;">
-                    </div>
-                </div>
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-inner contact-inner">
+            <h2 class="reveal">Let's build something<br><em>amazing together.</em></h2>
+            <p class="reveal">Whether you have a question, a project idea, or just want to connect — I'd love to hear from you.</p>
+            <div class="contact-links reveal">
+                <a href="mailto:sriram.davy@gmail.com" class="contact-card">
+                    <span class="contact-icon">✉️</span>
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">sriram.davy@gmail.com</span>
+                </a>
+                <a href="https://www.linkedin.com/in/sriram-davuluri-25764b125/" target="_blank" class="contact-card">
+                    <span class="contact-icon">💼</span>
+                    <span class="contact-label">LinkedIn</span>
+                    <span class="contact-value">sriram-davuluri</span>
+                </a>
+                <a href="https://github.com/Sriram-davy/SriramDavuluri-Profile" target="_blank" class="contact-card">
+                    <span class="contact-icon">🐙</span>
+                    <span class="contact-label">GitHub</span>
+                    <span class="contact-value">Sriram-davy</span>
+                </a>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/sriram-davuluri-25764b125/">LinkedIn</a>
-                <a href="https://github.com/Sriram-davy/SriramDavuluri-Profile">GitHub</a>
+        <div class="footer-inner">
+            <span class="footer-logo">Sriram Davuluri</span>
+            <span class="footer-copy">© 2026 · Built for Scale.</span>
+            <div class="footer-links">
+                <a href="https://www.linkedin.com/in/sriram-davuluri-25764b125/" target="_blank">LinkedIn</a>
+                <a href="https://github.com/Sriram-davy/SriramDavuluri-Profile" target="_blank">GitHub</a>
                 <a href="mailto:sriram.davy@gmail.com">Email</a>
             </div>
-            <p style="color: #666; font-size: 13px;">© 2026 Sriram Davuluri. Built for Scale.</p>
         </div>
     </footer>
 
     <script>
-        const sections = document.querySelectorAll('section');
-        const bgs = document.querySelectorAll('.bg-image');
-
-        const observerOptions = { threshold: 0.3 };
-        const sectionBgMap = { 'hero': 0, 'about': 0, 'engineering': 1, 'experience': 2, 'contact': 2 };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
-                    const bgIdx = sectionBgMap[entry.target.id];
-                    bgs.forEach((bg, i) => bg.classList.toggle('active', i === bgIdx));
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(s => observer.observe(s));
-
+    (function () {
+        // 1. PORTRAIT PARALLAX
+        const portraitCol = document.getElementById('portrait-col');
         window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            const activeBg = document.querySelector('.bg-image.active');
-            if (activeBg) activeBg.style.transform = `scale(${1 + scrolled * 0.00003})`;
+            if (portraitCol) portraitCol.style.transform = `translateY(${window.scrollY * -0.12}px)`;
+        }, { passive: true });
 
-            // Back to Top Visibility
-            const btt = document.getElementById('back-to-top');
-            if (scrolled > 500) {
-                btt.classList.add('visible');
-            } else {
-                btt.classList.remove('visible');
-            }
+        // 2. TICKER DUPLICATION (all 3 rows + marquee divider)
+        document.querySelectorAll('.ticker-track, .marquee-track').forEach(el => {
+            el.innerHTML += el.innerHTML;
         });
 
-        // Mobile Menu Logic
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = mobileMenu.querySelectorAll('a');
+        // 3. SCROLL REVEAL
+        const revealObserver = new IntersectionObserver(entries =>
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+            { threshold: 0.1 }
+        );
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-
-        document.getElementById('back-to-top').addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
+        // 4. COUNT-UP NUMBERS
+        function countUp(el) {
+            const target = +el.dataset.target;
+            let cur = 0;
+            const step = target / 112; 
+            const t = setInterval(() => {
+                cur += step;
+                if (cur >= target) { cur = target; clearInterval(t); }
+                el.textContent = Math.floor(cur);
+            }, 16);
+        }
+        const countObserver = new IntersectionObserver(entries =>
+            entries.forEach(e => { if (e.isIntersecting) { countUp(e.target); countObserver.unobserve(e.target); } }),
+            { threshold: 0.5 }
+        );
+        document.querySelectorAll('.count-up').forEach(el => countObserver.observe(el));
+    })();
     </script>
 </body>
-
 </html>
